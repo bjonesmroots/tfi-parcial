@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="inmobiliarias_list">
+      <field name="name">Inmobiliarias</field>
+      <field name="model">realty.inmobiliaria</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="plan_id"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Top menu item -->
+
+    <menuitem name="Realty.Net" id="realty.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Inmobiliarias" id="realty.inmobiliarias_list" parent="realty.menu_root"/>
+    <menuitem name="Planes" id="realty.planes_list" parent="realty.menu_root"/>
+  </data>
+</odoo>
