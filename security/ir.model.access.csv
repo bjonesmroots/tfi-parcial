@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_realty_inmobiliaria,realty.inmobiliaria,model_realty_inmobiliaria,base.group_user,1,1,1,1
+access_realty_plan,realty.plan,model_realty_plan,base.group_user,1,1,1,1
+access_realty_suscripcion,realty.suscripcion,model_realty_suscripcion,base.group_user,1,1,1,1

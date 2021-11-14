@@ -2,3 +2,4 @@
 
 from . import plan
 from . import inmobiliaria
+from . import suscripcion

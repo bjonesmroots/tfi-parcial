@@ -1,23 +1,47 @@
 <odoo>
   <data>
-    <record model="ir.ui.view" id="inmobiliarias_list">
-      <field name="name">Inmobiliarias</field>
+    <record model="ir.ui.view" id="realty.inmobiliarias_list">
+      <field name="name">realty.inmobiliaria.view.tree</field>
       <field name="model">realty.inmobiliaria</field>
       <field name="arch" type="xml">
         <tree>
           <field name="nombre"/>
           <field name="direccion"/>
-          <field name="plan_id"/>
         </tree>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="realty.planes_list">
+      <field name="name">realty.plan.view.tree</field>
+      <field name="model">realty.plan</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="codigo"/>
+          <field name="descripcion"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="realty.inmobiliarias_action_window">
+      <field name="name">Inmobiliarias</field>
+      <field name="res_model">realty.inmobiliaria</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="realty.planes_action_window">
+      <field name="name">Planes</field>
+      <field name="res_model">realty.plan</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <!-- Top menu item -->
 
     <menuitem name="Realty.Net" id="realty.menu_root"/>
 
     <!-- menu categories -->
 
-    <menuitem name="Inmobiliarias" id="realty.inmobiliarias_list" parent="realty.menu_root"/>
-    <menuitem name="Planes" id="realty.planes_list" parent="realty.menu_root"/>
+    <menuitem name="Inmobiliarias" id="realty.inmobiliarias_menu" parent="realty.menu_root" action="realty.inmobiliarias_action_window"/>
+    <menuitem name="Planes" id="realty.planes_menu" parent="realty.menu_root" action="realty.planes_action_window"/>
   </data>
 </odoo>

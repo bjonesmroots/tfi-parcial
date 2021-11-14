@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-class RealtyPlan(models.Model):
+class Plan(models.Model):
      _name = 'realty.plan'
      _description = 'Plan de suscripción de las inmobiliarias'
 

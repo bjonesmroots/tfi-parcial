@@ -1,5 +1,17 @@
 <odoo>
     <data>
-
+        <!-- Planes. -->
+          <record id="1" model="realty.plan">
+            <field name="codigo">BAS</field>
+            <field name="descripcion">Plan Basico</field>
+          </record>
+          <record id="2" model="realty.plan">
+            <field name="codigo">EXC</field>
+            <field name="descripcion">Plan Exclusivo</field>
+          </record>
+          <record id="3" model="realty.plan">
+            <field name="codigo">VIP</field>
+            <field name="descripcion">Plan VIP</field>
+          </record>
     </data>
 </odoo>

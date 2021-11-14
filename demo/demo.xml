@@ -1,23 +1,9 @@
 <odoo>
     <data>
-        <!-- Planes. -->
-          <record id="1" model="realty.plan">
-            <field name="codigo">BAS</field>
-            <field name="descripcion">Plan Basico</field>
-          </record>
-          <record id="2" model="realty.plan">
-            <field name="codigo">EXC</field>
-            <field name="descripcion">Plan Exclusivo</field>
-          </record>
-          <record id="3" model="realty.plan">
-            <field name="codigo">VIP</field>
-            <field name="descripcion">Plan VIP</field>
-          </record>
         <!-- Inmobiliarias. -->
           <record id="1" model="realty.inmobiliaria">
             <field name="nombre">Inmobiliaria Prima</field>
             <field name="direccion">Junin 526</field>
-            <field name="plan_id">1</field>
           </record>
     </data>
 </odoo>
