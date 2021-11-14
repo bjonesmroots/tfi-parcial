@@ -22,6 +22,16 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="realty.suscripciones_list">
+      <field name="name">realty.suscripcion.view.tree</field>
+      <field name="model">realty.suscripcion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="inmobiliaria_id"/>
+          <field name="plan_id"/>
+        </tree>
+      </field>
+    </record>
 
     <record model="ir.actions.act_window" id="realty.inmobiliarias_action_window">
       <field name="name">Inmobiliarias</field>
@@ -35,6 +45,12 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="realty.suscripciones_action_window">
+      <field name="name">Suscripciones</field>
+      <field name="res_model">realty.suscripcion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <!-- Top menu item -->
 
     <menuitem name="Realty.Net" id="realty.menu_root"/>
@@ -43,5 +59,6 @@
 
     <menuitem name="Inmobiliarias" id="realty.inmobiliarias_menu" parent="realty.menu_root" action="realty.inmobiliarias_action_window"/>
     <menuitem name="Planes" id="realty.planes_menu" parent="realty.menu_root" action="realty.planes_action_window"/>
+    <menuitem name="Suscripciones" id="realty.suscripciones_menu" parent="realty.menu_root" action="realty.suscripciones_action_window"/>
   </data>
 </odoo>
