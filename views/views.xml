@@ -17,7 +17,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="codigo"/>
-          <field name="descripcion"/>
+          <field name="nombre"/>
         </tree>
       </field>
     </record>
@@ -27,8 +27,9 @@
       <field name="model">realty.suscripcion</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="inmobiliaria_id"/>
-          <field name="plan_id"/>
+          <field name="nombre_inmobiliaria"/>
+          <field name="codigo_plan"/>
+          <field name="create_date"/>
         </tree>
       </field>
     </record>

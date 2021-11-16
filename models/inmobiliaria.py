@@ -9,4 +9,4 @@ class Inmobiliaria(models.Model):
 
      nombre = fields.Char()
      direccion = fields.Text()
-     suscripcion_ids = fields.Many2many('realty.suscripcion', 'Suscripcion')
+     suscripcion_ids = fields.One2many('realty.suscripcion','inmobiliaria_id', string='Suscripciones',)

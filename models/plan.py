@@ -8,4 +8,7 @@ class Plan(models.Model):
      _description = 'Plan de suscripción de las inmobiliarias'
 
      codigo = fields.Char()
+     nombre = fields.Char()
      descripcion = fields.Text()
+     precio = fields.Float()
+

@@ -3,15 +3,21 @@
         <!-- Planes. -->
           <record id="1" model="realty.plan">
             <field name="codigo">BAS</field>
-            <field name="descripcion">Plan Basico</field>
+            <field name="nombre">Plan Basico</field>
+            <field name="descripcion">&lt;li&gt;45 Días gratis&lt;/li&gt;&lt;li&gt;10 Usuarios&lt;/li&gt;&lt;li&gt;Propiedades en Venta&lt;/li&gt;&lt;li&gt;Propiedades en Alquiler&lt;/li&gt;&lt;li&gt;Contratos de Alquiler&lt;/li&gt;&lt;li&gt;Impresión de recibos&lt;/li&gt;&lt;li&gt;Administración de Impuestos&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;</field>
+            <field name="precio">5000</field>
           </record>
           <record id="2" model="realty.plan">
             <field name="codigo">EXC</field>
-            <field name="descripcion">Plan Exclusivo</field>
+            <field name="nombre">Plan Exclusivo</field>
+            <field name="descripcion">&lt;li&gt;45 Días gratis&lt;/li&gt;&lt;li&gt;10 Usuarios&lt;/li&gt;&lt;li&gt;Propiedades en Venta&lt;/li&gt;&lt;li&gt;Propiedades en Alquiler&lt;/li&gt;&lt;li&gt;Contratos de Alquiler&lt;/li&gt;&lt;li&gt;Impresión de recibos&lt;/li&gt;&lt;li&gt;Administración de Impuestos&lt;/li&gt;&lt;li&gt;Agenda de Contactos&lt;/li&gt;&lt;li&gt;Gestión de Incidentes&lt;/li&gt;&lt;li&gt;Agenda Y Alarmas&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;&lt;li&gt;-&lt;/li&gt;</field>
+            <field name="precio">8000</field>
           </record>
           <record id="3" model="realty.plan">
             <field name="codigo">VIP</field>
-            <field name="descripcion">Plan VIP</field>
+            <field name="nombre">Plan VIP</field>
+            <field name="descripcion">&lt;li&gt;45 Días gratis&lt;/li&gt;&lt;li&gt;10 Usuarios&lt;/li&gt;&lt;li&gt;Propiedades en Venta&lt;/li&gt;&lt;li&gt;Propiedades en Alquiler&lt;/li&gt;&lt;li&gt;Contratos de Alquiler&lt;/li&gt;&lt;li&gt;Impresión de recibos&lt;/li&gt;&lt;li&gt;Administración de Impuestos&lt;/li&gt;&lt;li&gt;Agenda de Contactos&lt;/li&gt;&lt;li&gt;Gestión de Incidentes&lt;/li&gt;&lt;li&gt;Agenda Y Alarmas&lt;/li&gt;&lt;li&gt;Web Propia&lt;/li&gt;&lt;li&gt;Administración de Consorcios&lt;/li&gt;</field>
+            <field name="precio">10000</field>
           </record>
     </data>
 </odoo>
