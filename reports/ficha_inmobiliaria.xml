@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ficha_inmobiliaria_report" model="ir.actions.report">
+        <field name="name">Ficha Inmobiliaria</field>
+        <field name="model">realty.inmobiliaria</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">realty.ficha_inmobiliaria_report_view</field>
+        <field name="report_file">realty.ficha_inmobiliaria_report</field>
+        <field name="binding_model_id" ref="model_realty_inmobiliaria"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="ficha_inmobiliaria_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="inmobiliaria">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Ficha Inmobiliaria</h2>
+                        <div>Nombre: <span t-field="inmobiliaria.nombre"/></div>
+                        <div>Direccion: <span t-field="inmobiliaria.direccion"/></div>
+                        <div>Suscripciones:</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="100px">Plan</th>
+                                    <th width="200px">Inicio</th>
+                                    <th width="200px">Ultimo cobro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="inmobiliaria.suscripcion_ids" t-as="suscripcion">
+                                    <tr>
+                                        <td><span t-field="suscripcion.codigo_plan"/></td>
+                                        <td><span t-field="suscripcion.create_date"/></td>
+                                        <td><span t-field="suscripcion.fecha_ultimo_cobro"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+   </template>
+</odoo>

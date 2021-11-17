@@ -30,6 +30,7 @@
           <field name="nombre_inmobiliaria"/>
           <field name="codigo_plan"/>
           <field name="create_date"/>
+          <field name="fecha_ultimo_cobro"/>
         </tree>
       </field>
     </record>

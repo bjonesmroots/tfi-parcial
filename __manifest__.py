@@ -24,6 +24,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'reports/ficha_inmobiliaria.xml',
         'views/views.xml',
         'views/front_templates.xml',
         'data/planes.xml',

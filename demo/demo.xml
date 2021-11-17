@@ -9,11 +9,21 @@
             <field name="nombre">Inmobiliaria Forino</field>
             <field name="direccion">Corrientes 2244</field>
           </record>
+          <record id="3" model="realty.inmobiliaria">
+            <field name="nombre">Inmobiliaria Ramos</field>
+            <field name="direccion">Entre Rios 175</field>
+          </record>
           <record id="1" model="realty.suscripcion">
             <field name="inmobiliaria_id">1</field>
             <field name="plan_id">1</field>
             <field name="fecha_ultimo_cobro">2021-11-15</field>
             <field name="id_mercadopago">jds39s9s9jf8934s20dhngj39ehndshah</field>
+          </record>
+          <record id="2" model="realty.suscripcion">
+            <field name="inmobiliaria_id">3</field>
+            <field name="plan_id">2</field>
+            <field name="fecha_ultimo_cobro">2021-10-05</field>
+            <field name="id_mercadopago">f6rtywtsgfsg5tyhdgfhgsgf354rgfg34</field>
           </record>
     </data>
 </odoo>
