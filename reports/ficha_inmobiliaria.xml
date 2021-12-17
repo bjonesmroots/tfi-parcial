@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="inmobiliaria.suscripcion_ids" t-as="suscripcion">
+                                <t t-foreach="inmobiliaria.suscripciones" t-as="suscripcion">
                                     <tr>
                                         <td><span t-field="suscripcion.codigo_plan"/></td>
                                         <td><span t-field="suscripcion.create_date"/></td>

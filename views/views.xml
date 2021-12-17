@@ -70,6 +70,8 @@
           <field name="direccion_propiedad"/>
           <field name="fecha_inicio"/>
           <field name="fecha_fin"/>
+          <field name="valor_inicial"/>
+          <field name="incremento"/>
         </tree>
       </field>
     </record>

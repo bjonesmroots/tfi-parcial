@@ -182,5 +182,80 @@
                 </div>
             </t>
         </template>
+
+        <template id="cobrar_alquiler_page">
+            <link href="/realty/static/css/front_cobrar.css" rel="stylesheet" type="text/css"/>
+            <t t-call="website.layout">
+                <div style="text-align:center">
+                    <img class="logo" src="/realty/static/imgs/realty.png" />
+                    <form role="form" action="/realty/guardarRecibo" method="POST">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="alquiler_id" t-att-value="alquiler.id" inputmode="numeric"/>
+                        <div class="payment-container">
+                            <div class="payment-title">
+                                <h1>Información del contrato</h1>
+                            </div>
+                            <div class="container2 preload">
+                                <div class="creditcard">
+                                    <div class="front">
+                                        <div><label>Propiedad: <t t-esc="alquiler.contrato.propiedad.nombre"/></label></div>
+                                        <div><label>Propietario: <t t-esc="alquiler.contrato.propiedad.propietarios[0].contacto.nombre"/></label></div>
+                                        <div><label>Fecha Alquiler: <t t-esc="alquiler.fecha"/></label></div>
+                                        <div><label>Valor Alquiler: $<t t-esc="alquiler.valor"/></label></div>
+                                        <div><label>Fecha Vencimiento: <t t-esc="alquiler.fecha_vencimiento"/></label></div>
+                                        <div><label>Interes Diario: <t t-esc="alquiler.contrato.interes_diario"/>%</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-container">
+                                <div class="field-container">
+                                    <label for="fecha">Fecha Recibo</label>
+                                    <input id="fecha" name="fecha"  type="date"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="valor_alquiler">Valor Alquiler</label>
+                                    <input id="valor_alquiler" type="text" t-att-value="alquiler.valor" inputmode="numeric"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="name">Intereses</label>
+                                    <input id="intereses" name="intereses" maxlength="20" type="text"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="name">Descripción</label>
+                                    <textarea id="iintereses_texto" name="intereses_texto" maxlength="100" rows="1" type="text"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="name">Descuento</label>
+                                    <input id="descuento" name="descuento" maxlength="20" type="text"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="name">Descripción</label>
+                                    <textarea id="descuento_texto" name="descuento_texto" maxlength="100" rows="1"  type="text"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="name">Extras</label>
+                                    <input id="extras" name="extras" maxlength="20" type="text"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="name">Descripción</label>
+                                    <textarea id="extras_texto" name="extras_texto" maxlength="100" rows="1"  type="text"/>
+                                </div>
+                                <div class="field-container">
+                                    <label for="total">Total Recibo</label>
+                                    <input id="total_recibo" type="text" inputmode="numeric"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary mb-4">Generar Recibo</button>
+                        </div>
+                    </form>
+                </div>
+            </t>
+            <xpath expr="." position="inside">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+                <script type="text/javascript" src="/realty/static/js/front_cobrar.js"></script>
+            </xpath>
+        </template>
     </data>
 </odoo>

@@ -12,7 +12,7 @@ class realty(http.Controller):
     def realty_suscribir(self, **kw):
         return request.render('realty.suscribir_page', {
             'planes': http.request.env['realty.plan'].search([]),
-            'inmobiliaria': http.request.env['realty.inmobiliaria'].search([("id", "=", 1)])
+            'inmobiliaria': http.request.env['realty.inmobiliaria'].search([("id", "=", 2)])
         })
 
     @http.route('/realty/plan/<int:plan_id>', website=True, auth='public')
@@ -21,6 +21,7 @@ class realty(http.Controller):
             'plan': http.request.env['realty.plan'].search([("id", "=", plan_id)]),
             'inmobiliaria': http.request.env['realty.inmobiliaria'].search([("id", "=", 2)])
         })
+
     @http.route('/realty/guardarSuscripcion', type="http", website=True, auth='public')
     def realty_guardar_suscripcion(self, **kw):
         tarjeta_val ={
@@ -46,3 +47,9 @@ class realty(http.Controller):
                 'plan': http.request.env['realty.plan'].search([("id", "=", kw.get('plan_id'))]),
                 'inmobiliaria': http.request.env['realty.inmobiliaria'].search([("id", "=", 2)])
             })
+
+    @http.route('/realty/cobrar', website=True, auth='public')
+    def realty_cobrar(self, **kw):
+        return request.render('realty.cobrar_alquiler_page', {
+            'alquiler': http.request.env['realty.alquiler'].search([("id", "=", kw.get('id'))]),
+        })

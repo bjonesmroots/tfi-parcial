@@ -7,5 +7,5 @@ class Propietario(models.Model):
     _name = 'realty.propietario'
     _description = 'Propetarios de propiedades'
 
-    contacto_id = fields.Many2one('realty.contacto', 'Propietario')
-    propiedad_id = fields.Many2one('realty.propiedad', 'Propiedad')
+    contacto = fields.Many2one('realty.contacto', 'Propietario')
+    propiedad = fields.Many2one('realty.propiedad', 'Propiedad')
