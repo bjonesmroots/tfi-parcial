@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, http
+from odoo.http import request
 from datetime import date
 
 
@@ -26,5 +27,10 @@ class Alquiler(models.Model):
                 record.estado = 'Vigente'
             elif date.today() < record.fecha:
                 record.estado = 'Futuro'
+
     def cobrarClickEvent(self):
-        raise UserWarning("Cobrar Alquiler")
+        return {
+            'type': 'ir.actions.act_url',
+            'url': 'http://localhost:8069/realty/cobrar',
+            'target': 'new',
+        }
