@@ -2,3 +2,11 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_realty_inmobiliaria,realty.inmobiliaria,model_realty_inmobiliaria,base.group_user,1,1,1,1
 access_realty_plan,realty.plan,model_realty_plan,base.group_user,1,1,1,1
 access_realty_suscripcion,realty.suscripcion,model_realty_suscripcion,base.group_user,1,1,1,1
+access_realty_contacto,realty.contacto,model_realty_contacto,base.group_user,1,1,1,1
+access_realty_propiedad,realty.propiedad,model_realty_propiedad,base.group_user,1,1,1,1
+access_realty_propietario,realty.propietario,model_realty_propietario,base.group_user,1,1,1,1
+access_realty_inquilino,realty.inquilino,model_realty_inquilino,base.group_user,1,1,1,1
+access_realty_garante,realty.garante,model_realty_garante,base.group_user,1,1,1,1
+access_realty_contrato,realty.contrato,model_realty_contrato,base.group_user,1,1,1,1
+access_realty_alquiler,realty.alquiler,model_realty_alquiler,base.group_user,1,1,1,1
+access_realty_recibo,realty.recibo,model_realty_recibo,base.group_user,1,1,1,1

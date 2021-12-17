@@ -13,6 +13,7 @@
             <field name="nombre">Inmobiliaria Ramos</field>
             <field name="direccion">Entre Rios 175</field>
           </record>
+        <!-- Suscripciones. -->
           <record id="1" model="realty.suscripcion">
             <field name="inmobiliaria_id">1</field>
             <field name="plan_id">1</field>
@@ -24,6 +25,221 @@
             <field name="plan_id">2</field>
             <field name="fecha_ultimo_cobro">2021-10-05</field>
             <field name="id_mercadopago">f6rtywtsgfsg5tyhdgfhgsgf354rgfg34</field>
+          </record>
+        <!-- Propiedades. -->
+          <record id="1" model="realty.propiedad">
+            <field name="inmobiliaria_id">1</field>
+            <field name="nombre">Departamento 2 Dormitorios Amueblado</field>
+            <field name="direccion">Entre Rios 500 3B</field>
+          </record>
+        <!-- Contactos. -->
+          <record id="1" model="realty.contacto">
+            <field name="inmobiliaria_id">1</field>
+            <field name="nombre">Brian Jones</field>
+            <field name="direccion">Junin 526</field>
+            <field name="dni">32513539</field>
+            <field name="fecha_nacimiento">1986-11-28</field>
+          </record>
+          <record id="2" model="realty.contacto">
+            <field name="inmobiliaria_id">1</field>
+            <field name="nombre">Maria Carolina Rossi</field>
+            <field name="direccion">Junin 526</field>
+            <field name="dni">29206261</field>
+            <field name="fecha_nacimiento">1982-02-23</field>
+          </record>
+          <record id="3" model="realty.contacto">
+            <field name="inmobiliaria_id">1</field>
+            <field name="nombre">Ivan Seggiaro</field>
+            <field name="direccion">Pasco 540</field>
+            <field name="dni">32832912</field>
+            <field name="fecha_nacimiento">1987-03-19</field>
+          </record>
+          <record id="4" model="realty.contacto">
+            <field name="inmobiliaria_id">1</field>
+            <field name="nombre">Ivan Ariel Mattia</field>
+            <field name="direccion">Catamarca 3225</field>
+            <field name="dni">32290203</field>
+            <field name="fecha_nacimiento">1986-11-04</field>
+          </record>
+        <!-- Propietarios. -->
+          <record id="1" model="realty.propietario">
+            <field name="contacto_id">1</field>
+            <field name="propiedad_id">1</field>
+          </record>
+        <!-- Contratos. -->
+          <record id="1" model="realty.contrato">
+            <field name="propiedad_id">1</field>
+            <field name="fecha_inicio">2021-12-01</field>
+            <field name="fecha_fin">2023-12-01</field>
+            <field name="dia_vencimiento">10</field>
+            <field name="incremento">25</field>
+            <field name="incremento_meses">6</field>
+            <field name="valor_inicial">20000</field>
+          </record>
+        <!-- Inquilinos. -->
+          <record id="1" model="realty.inquilino">
+            <field name="contacto_id">2</field>
+            <field name="contrato_id">1</field>
+          </record>
+        <!-- Garantes. -->
+          <record id="1" model="realty.garante">
+            <field name="contacto_id">3</field>
+            <field name="contrato_id">1</field>
+          </record>
+          <record id="2" model="realty.garante">
+            <field name="contacto_id">4</field>
+            <field name="contrato_id">1</field>
+          </record>
+        <!-- Alquileres. -->
+          <record id="1" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2021-10-01</field>
+            <field name="fecha_vencimiento">2021-10-10</field>
+            <field name="valor">20000</field>
+          </record>
+          <record id="2" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2021-11-01</field>
+            <field name="fecha_vencimiento">2021-11-10</field>
+            <field name="valor">20000</field>
+          </record>
+          <record id="3" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2021-12-01</field>
+            <field name="fecha_vencimiento">2021-12-10</field>
+            <field name="valor">20000</field>
+          </record>
+          <record id="4" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-01-01</field>
+            <field name="fecha_vencimiento">2022-01-10</field>
+            <field name="valor">20000</field>
+          </record>
+          <record id="5" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-02-01</field>
+            <field name="fecha_vencimiento">2022-02-10</field>
+            <field name="valor">20000</field>
+          </record>
+          <record id="6" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-03-01</field>
+            <field name="fecha_vencimiento">2022-03-10</field>
+            <field name="valor">20000</field>
+          </record>
+          <record id="7" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-04-01</field>
+            <field name="fecha_vencimiento">2022-04-10</field>
+            <field name="valor">25000</field>
+          </record>
+          <record id="8" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-05-01</field>
+            <field name="fecha_vencimiento">2022-05-10</field>
+            <field name="valor">25000</field>
+          </record>
+          <record id="9" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-06-01</field>
+            <field name="fecha_vencimiento">2022-06-10</field>
+            <field name="valor">25000</field>
+          </record>
+          <record id="10" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-07-01</field>
+            <field name="fecha_vencimiento">2022-07-10</field>
+            <field name="valor">25000</field>
+          </record>
+          <record id="11" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-08-01</field>
+            <field name="fecha_vencimiento">2022-08-10</field>
+            <field name="valor">25000</field>
+          </record>
+          <record id="12" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-09-01</field>
+            <field name="fecha_vencimiento">2022-09-10</field>
+            <field name="valor">25000</field>
+          </record>
+          <record id="13" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-10-01</field>
+            <field name="fecha_vencimiento">2022-10-10</field>
+            <field name="valor">30000</field>
+          </record>
+          <record id="14" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-11-01</field>
+            <field name="fecha_vencimiento">2022-11-10</field>
+            <field name="valor">30000</field>
+          </record>
+          <record id="15" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2022-12-01</field>
+            <field name="fecha_vencimiento">2022-12-10</field>
+            <field name="valor">30000</field>
+          </record>
+          <record id="16" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-01-01</field>
+            <field name="fecha_vencimiento">2023-01-10</field>
+            <field name="valor">30000</field>
+          </record>
+          <record id="17" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-02-01</field>
+            <field name="fecha_vencimiento">2023-02-10</field>
+            <field name="valor">30000</field>
+          </record>
+          <record id="18" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-03-01</field>
+            <field name="fecha_vencimiento">2023-03-10</field>
+            <field name="valor">30000</field>
+          </record>
+          <record id="19" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-04-01</field>
+            <field name="fecha_vencimiento">2023-04-10</field>
+            <field name="valor">35000</field>
+          </record>
+          <record id="20" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-05-01</field>
+            <field name="fecha_vencimiento">2023-05-10</field>
+            <field name="valor">35000</field>
+          </record>
+          <record id="21" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-06-01</field>
+            <field name="fecha_vencimiento">2023-06-10</field>
+            <field name="valor">35000</field>
+          </record>
+          <record id="22" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-07-01</field>
+            <field name="fecha_vencimiento">2023-07-10</field>
+            <field name="valor">35000</field>
+          </record>
+          <record id="23" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-08-01</field>
+            <field name="fecha_vencimiento">2023-08-10</field>
+            <field name="valor">35000</field>
+          </record>
+          <record id="24" model="realty.alquiler">
+            <field name="contrato_id">1</field>
+            <field name="fecha">2023-09-01</field>
+            <field name="fecha_vencimiento">2023-09-10</field>
+            <field name="valor">35000</field>
+          </record>
+        <!-- Recibos. -->
+          <record id="1" model="realty.recibo">
+            <field name="alquiler_id">1</field>
+            <field name="fecha">2021-10-05</field>
+            <field name="valor">20000</field>
           </record>
     </data>
 </odoo>

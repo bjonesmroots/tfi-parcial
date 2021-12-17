@@ -3,10 +3,10 @@
     'name': "Realty.Net",
 
     'summary': """
-        TFI - Parcial - Realty.Net CU1""",
+        TFI - Realty.Net CU1 y CU2""",
 
     'description': """
-        TFI - Parcial - Realty.Net CU1
+        TFI - Realty.Net CU1 y CU2
     """,
 
     'author': "Brian Jones",

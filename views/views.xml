@@ -35,6 +35,94 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="realty.contactos_list">
+      <field name="name">realty.contacto.view.tree</field>
+      <field name="model">realty.contacto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="dni"/>
+          <field name="fecha_nacimiento"/>
+          <field name="create_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="realty.propiedades_list">
+      <field name="name">realty.propiedad.view.tree</field>
+      <field name="model">realty.propiedad</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre_inmobiliaria"/>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="create_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="realty.contratos_list">
+      <field name="name">realty.contrato.view.tree</field>
+      <field name="model">realty.contrato</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="direccion_propiedad"/>
+          <field name="fecha_inicio"/>
+          <field name="fecha_fin"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="realty.alquileres_list">
+      <field name="name">realty.alquiler.view.tree</field>
+      <field name="model">realty.alquiler</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="fecha"/>
+          <field name="fecha_vencimiento"/>
+          <field name="valor"/>
+          <field name="estado"/>
+          <button name="cobrarClickEvent" string="Cobrar" type="object" attrs="{'invisible': [('estado', '=', 'Pagado')]}" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="realty.inquilinos_list">
+      <field name="name">realty.inquilino.view.tree</field>
+      <field name="model">realty.inquilino</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="dni"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="realty.garantes_list">
+      <field name="name">realty.garante.view.tree</field>
+      <field name="model">realty.garante</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="dni"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="realty.recibos_list">
+      <field name="name">realty.recibo.view.tree</field>
+      <field name="model">realty.recibo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="fecha"/>
+          <field name="valor"/>
+        </tree>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="realty.inmobiliarias_action_window">
       <field name="name">Inmobiliarias</field>
       <field name="res_model">realty.inmobiliaria</field>
@@ -53,6 +141,24 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="realty.contactos_action_window">
+      <field name="name">Contactos</field>
+      <field name="res_model">realty.contacto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="realty.propiedades_action_window">
+      <field name="name">Propiedades</field>
+      <field name="res_model">realty.propiedad</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="realty.contratos_action_window">
+      <field name="name">Contratos</field>
+      <field name="res_model">realty.contrato</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <!-- Top menu item -->
 
     <menuitem name="Realty.Net" id="realty.menu_root"/>
@@ -62,5 +168,8 @@
     <menuitem name="Inmobiliarias" id="realty.inmobiliarias_menu" parent="realty.menu_root" action="realty.inmobiliarias_action_window"/>
     <menuitem name="Planes" id="realty.planes_menu" parent="realty.menu_root" action="realty.planes_action_window"/>
     <menuitem name="Suscripciones" id="realty.suscripciones_menu" parent="realty.menu_root" action="realty.suscripciones_action_window"/>
+    <menuitem name="Contactos" id="realty.contactos_menu" parent="realty.menu_root" action="realty.contactos_action_window"/>
+    <menuitem name="Propiedades" id="realty.propiedades_menu" parent="realty.menu_root" action="realty.propiedades_action_window"/>
+    <menuitem name="Contratos" id="realty.contratos_menu" parent="realty.menu_root" action="realty.contratos_action_window"/>
   </data>
 </odoo>
