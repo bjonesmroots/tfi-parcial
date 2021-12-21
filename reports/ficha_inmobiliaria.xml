@@ -18,7 +18,7 @@
                         <h2>Ficha Inmobiliaria</h2>
                         <div>Nombre: <span t-field="inmobiliaria.nombre"/></div>
                         <div>Direccion: <span t-field="inmobiliaria.direccion"/></div>
-                        <div>Suscripciones:</div>
+                        <div style="margin-top:30px">Suscripciones:</div>
                         <table>
                             <thead>
                                 <tr>
@@ -33,6 +33,23 @@
                                         <td><span t-field="suscripcion.codigo_plan"/></td>
                                         <td><span t-field="suscripcion.create_date"/></td>
                                         <td><span t-field="suscripcion.fecha_ultimo_cobro"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div style="margin-top:30px">Propiedades:</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="600px">Direccion</th>
+                                    <th width="400px">Propietario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="inmobiliaria.propiedades" t-as="propiedad">
+                                    <tr>
+                                        <td><span t-field="propiedad.direccion"/></td>
+                                        <td><span t-field="propiedad.propietarios[0].contacto.nombre"/></td>
                                     </tr>
                                 </t>
                             </tbody>

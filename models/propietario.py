@@ -9,3 +9,9 @@ class Propietario(models.Model):
 
     contacto = fields.Many2one('realty.contacto', 'Propietario')
     propiedad = fields.Many2one('realty.propiedad', 'Propiedad')
+
+    def name_get(self):
+        result = []
+        for record in self:
+            result.append((record.id, record.contact.nombre))
+        return result

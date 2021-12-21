@@ -5,6 +5,9 @@ from odoo import http
 from odoo.http import request
 from datetime import date
 from ..models.mercadopagoAPI import MercadoPagoAPI
+from ..models.decoradorEmail import DecoradorEmail
+from ..models.decoradorSMS import DecoradorSMS
+import time
 
 
 class realty(http.Controller):
@@ -32,8 +35,8 @@ class realty(http.Controller):
         }
         if MercadoPagoAPI.validarTarjeta(tarjeta_val):
             suscripcion_val = {
-                'plan_id': kw.get('plan_id'),
-                'inmobiliaria_id': kw.get('inmobiliaria_id'),
+                'plan': kw.get('plan_id'),
+                'inmobiliaria': kw.get('inmobiliaria_id'),
                 'fecha_ultimo_cobro': date.isoformat(date.today()),
                 'id_mercadopago': MercadoPagoAPI.procesarSuscripcion(tarjeta_val)
             }
@@ -52,4 +55,31 @@ class realty(http.Controller):
     def realty_cobrar(self, **kw):
         return request.render('realty.cobrar_alquiler_page', {
             'alquiler': http.request.env['realty.alquiler'].search([("id", "=", kw.get('id'))]),
+        })
+
+    @http.route('/realty/guardarRecibo', website=True, auth='public')
+    def realty_guardar_recibo(self, **kw):
+        alquiler = http.request.env['realty.alquiler'].search([("id", "=", kw.get('alquiler_id'))])
+        recibo_val = {
+            'alquiler': alquiler.id,
+            'descuento': kw.get('descuento'),
+            'descuento_texto': kw.get('descuento_texto'),
+            'intereses': kw.get('intereses'),
+            'intereses_texto': kw.get('intereses_texto'),
+            'extras': kw.get('extras'),
+            'extras_texto': kw.get('extras_texto'),
+            'valor': kw.get('total_recibo'),
+            'fecha': kw.get('fecha'),
+        }
+        recibo = http.request.env['realty.recibo'].sudo().create(recibo_val)
+        notificador = None
+        if kw.get('enviar_sms'):
+            notificador = DecoradorSMS(recibo)
+        if kw.get('enviar_email'):
+            notificador = DecoradorEmail(notificador)
+        if notificador:
+            notificador.enviarNotificacion()
+        return request.render('realty.recibo_alquiler', {
+                'recibo': recibo,
+                'alquiler': alquiler,
         })

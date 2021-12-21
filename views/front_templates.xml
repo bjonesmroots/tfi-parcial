@@ -191,6 +191,8 @@
                     <form role="form" action="/realty/guardarRecibo" method="POST">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                         <input type="hidden" name="alquiler_id" t-att-value="alquiler.id" inputmode="numeric"/>
+                        <input type="hidden" id="interes_diario" t-att-value="alquiler.contrato.interes_diario" inputmode="numeric"/>
+                        <input type="hidden" id="fecha_vencimiento" t-att-value="alquiler.fecha_vencimiento" inputmode="numeric"/>
                         <div class="payment-container">
                             <div class="payment-title">
                                 <h1>Información del contrato</h1>
@@ -204,29 +206,30 @@
                                         <div><label>Valor Alquiler: $<t t-esc="alquiler.valor"/></label></div>
                                         <div><label>Fecha Vencimiento: <t t-esc="alquiler.fecha_vencimiento"/></label></div>
                                         <div><label>Interes Diario: <t t-esc="alquiler.contrato.interes_diario"/>%</label></div>
+                                        <t t-if="len(alquiler.recibos) > 0"><div><label>Total Pagado: $<t t-esc="alquiler.total_pagado"/>(En <t t-esc="len(alquiler.recibos)"/> recibo/s)</label></div></t>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-container">
                                 <div class="field-container">
                                     <label for="fecha">Fecha Recibo</label>
-                                    <input id="fecha" name="fecha"  type="date"/>
+                                    <input id="fecha" name="fecha" type="date"/>
                                 </div>
                                 <div class="field-container">
                                     <label for="valor_alquiler">Valor Alquiler</label>
-                                    <input id="valor_alquiler" type="text" t-att-value="alquiler.valor" inputmode="numeric"/>
+                                    <input id="valor_alquiler" class="valores" type="text" t-att-value="(alquiler.valor - alquiler.total_pagado)" inputmode="numeric"/>
                                 </div>
                                 <div class="field-container">
                                     <label for="name">Intereses</label>
-                                    <input id="intereses" name="intereses" maxlength="20" type="text"/>
+                                    <input readonly="readonly" class="valores" id="intereses" name="intereses" maxlength="20" type="text"/>
                                 </div>
                                 <div class="field-container">
                                     <label for="name">Descripción</label>
-                                    <textarea id="iintereses_texto" name="intereses_texto" maxlength="100" rows="1" type="text"/>
+                                    <textarea id="intereses_texto" name="intereses_texto" maxlength="100" rows="1" type="text"/>
                                 </div>
                                 <div class="field-container">
                                     <label for="name">Descuento</label>
-                                    <input id="descuento" name="descuento" maxlength="20" type="text"/>
+                                    <input id="descuento" class="valores" name="descuento" maxlength="20" type="text"/>
                                 </div>
                                 <div class="field-container">
                                     <label for="name">Descripción</label>
@@ -234,7 +237,7 @@
                                 </div>
                                 <div class="field-container">
                                     <label for="name">Extras</label>
-                                    <input id="extras" name="extras" maxlength="20" type="text"/>
+                                    <input id="extras" class="valores" name="extras" maxlength="20" type="text"/>
                                 </div>
                                 <div class="field-container">
                                     <label for="name">Descripción</label>
@@ -242,7 +245,15 @@
                                 </div>
                                 <div class="field-container">
                                     <label for="total">Total Recibo</label>
-                                    <input id="total_recibo" type="text" inputmode="numeric"/>
+                                    <input id="total_recibo" name="total_recibo" type="text" inputmode="numeric"/>
+                                </div>
+                                <div class="field-container">
+                                    <input type="checkbox" class="checkbox" id="enviar_sms" name="enviar_sms" checked="checked" />
+                                    <label for="enviar_sms">Enviar por SMS</label>
+                                </div>
+                                <div class="field-container">
+                                    <input type="checkbox" class="checkbox" id="enviar_email" name="enviar_email" checked="checked" />
+                                    <label for="enviar_email">Enviar por Email</label>
                                 </div>
                             </div>
                         </div>
@@ -254,7 +265,64 @@
             </t>
             <xpath expr="." position="inside">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script type="text/javascript" src="/realty/static/js/front_cobrar.js"></script>
+            </xpath>
+        </template>
+
+        <template id="recibo_alquiler">
+            <link href="/realty/static/css/front_recibo.css" rel="stylesheet" type="text/css"/>
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="receipt-main">
+                      <p class="receipt-title">Recibo</p>
+
+                      <div class="receipt-section pull-left">
+                        <span class="receipt-label text-large">Número:</span>
+                        <span class="text-large">0001-00000<t t-esc="recibo.id"/></span>
+                      </div>
+
+                      <div class="pull-right receipt-section">
+                        <span class="text-large">Rosario, <t t-esc="recibo.fecha"/></span>
+                      </div>
+
+                      <div class="clearfix"></div>
+
+                      <div class="receipt-section">
+                        <span class="receipt-label"><t t-esc="alquiler.contrato.inquilinos[0].contacto.nombre"/> (DNI: <t t-esc="alquiler.contrato.inquilinos[0].contacto.dni"/>)</span>
+                      </div>
+
+                      <div class="receipt-section">
+                        <span class="receipt-label">Direcion: <t t-esc="alquiler.contrato.inquilinos[0].contacto.direccion"/></span>
+                        <span></span>
+                      </div>
+
+                      <div class="receipt-section">
+                        <p>Recebi de <t t-esc="alquiler.contrato.inquilinos[0].contacto.nombre"/> el importe de <t t-esc="recibo.valor_letras"/></p>
+                        <p>En concepto de alquiler de la propiedad con domicilio en <t t-esc="alquiler.contrato.propiedad.direccion"/>: $<t t-esc="recibo.cancelado_alquiler"/></p>
+                          <t t-if="recibo.extras > 0"><p>En concepto de <t t-esc="recibo.extras_texto"/>: $<t t-esc="recibo.extras"/></p></t>
+                          <t t-if="recibo.intereses > 0"><p>En concepto de intereses por <t t-esc="recibo.intereses_texto"/>: $<t t-esc="recibo.intereses"/></p></t>
+                          <t t-if="recibo.descuento > 0"><p>Se realizo un descuento en concepto de <t t-esc="recibo.descuento_texto"/>: $<t t-esc="recibo.descuento"/></p></t>
+                      </div>
+
+                      <div class="receipt-section">
+                        <p class="pull-right text-large">Total: $<t t-esc="recibo.valor"/></p>
+                      </div>
+
+                      <div class="clearfix"></div>
+
+                      <div class="receipt-signature">
+                        <p class="receipt-line"></p>
+                        <p><t t-esc="alquiler.contrato.propiedad.inmobiliaria.nombre"/></p>
+                        <p><t t-esc="alquiler.contrato.propiedad.inmobiliaria.telefono"/></p>
+                        <p><t t-esc="alquiler.contrato.propiedad.inmobiliaria.direccion"/></p>
+                      </div>
+
+                    </div>
+                </div>
+            </t>
+            <xpath expr="." position="inside">
+
             </xpath>
         </template>
     </data>

@@ -12,20 +12,30 @@ class Alquiler(models.Model):
     fecha = fields.Date()
     fecha_vencimiento = fields.Date()
     valor = fields.Float()
-    estado = fields.Char(string='Estado', compute='_compute_estado')
     recibos = fields.One2many('realty.recibo', 'alquiler', string='Recibos', )
+    total_pagado = fields.Float(string='Pagado', compute='_compute_total_pagado')
+    estado = fields.Char(string='Estado', compute='_compute_estado')
+
+    def _compute_total_pagado(self):
+        for record in self:
+            totalpagado = 0
+            for recibo in record.recibos:
+                totalpagado += recibo.cancelado_alquiler
+            record.total_pagado = totalpagado
 
     def _compute_estado(self):
         for record in self:
-            if date.today() > record.fecha_vencimiento:
-                if len(record.recibos) > 0:
-                    record.estado = 'Pagado'
-                else:
+            if record.total_pagado >= record.valor:
+                record.estado = 'Pagado'
+            else:
+                if date.today() > record.fecha_vencimiento:
                     record.estado = 'Vencido'
-            elif record.fecha < date.today() < record.fecha_vencimiento:
-                record.estado = 'Vigente'
-            elif date.today() < record.fecha:
-                record.estado = 'Futuro'
+                elif record.fecha < date.today() < record.fecha_vencimiento:
+                    record.estado = 'Vigente'
+                elif date.today() < record.fecha:
+                    record.estado = 'Futuro'
+                else:
+                    record.estado = 'Futuro'
 
     def cobrarClickEvent(self):
         return {

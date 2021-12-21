@@ -11,3 +11,9 @@ class Plan(models.Model):
     nombre = fields.Char()
     descripcion = fields.Text()
     precio = fields.Float()
+
+    def name_get(self):
+        result = []
+        for record in self:
+            result.append((record.id, record.nombre))
+        return result

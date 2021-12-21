@@ -3,14 +3,17 @@
         <!-- Inmobiliarias. -->
           <record id="1" model="realty.inmobiliaria">
             <field name="nombre">Inmobiliaria Prima</field>
+            <field name="telefono">341-6512541</field>
             <field name="direccion">Junin 526, Rosario, Santa Fe</field>
           </record>
           <record id="2" model="realty.inmobiliaria">
             <field name="nombre">Inmobiliaria Forino</field>
+            <field name="telefono">341-6103539</field>
             <field name="direccion">Corrientes 2244, Rosario, Santa Fe</field>
           </record>
           <record id="3" model="realty.inmobiliaria">
             <field name="nombre">Inmobiliaria Ramos</field>
+            <field name="telefono">341-2562451</field>
             <field name="direccion">Entre Rios 175, Rosario, Santa Fe</field>
           </record>
         <!-- Suscripciones. -->
@@ -43,6 +46,8 @@
             <field name="nombre">Brian Jones</field>
             <field name="direccion">Junin 526, Rosario, Santa Fe</field>
             <field name="dni">32513539</field>
+            <field name="telefono">3416103539</field>
+            <field name="email">bjones@mroots.com.ar</field>
             <field name="fecha_nacimiento">1986-11-28</field>
           </record>
           <record id="2" model="realty.contacto">
@@ -50,6 +55,8 @@
             <field name="nombre">Maria Carolina Rossi</field>
             <field name="direccion">Junin 526, Rosario, Santa Fe</field>
             <field name="dni">29206261</field>
+            <field name="telefono">3416554121</field>
+            <field name="email">mcrossi@gmail.com</field>
             <field name="fecha_nacimiento">1982-02-23</field>
           </record>
           <record id="3" model="realty.contacto">
@@ -57,6 +64,8 @@
             <field name="nombre">Ivan Seggiaro</field>
             <field name="direccion">Pasco 540, Rosario, Santa Fe</field>
             <field name="dni">32832912</field>
+            <field name="telefono">3416113539</field>
+            <field name="email">ivan@mroots.com.ar</field>
             <field name="fecha_nacimiento">1987-03-19</field>
           </record>
           <record id="4" model="realty.contacto">
@@ -64,12 +73,18 @@
             <field name="nombre">Ivan Ariel Mattia</field>
             <field name="direccion">Catamarca 3225, Rosario, Santa Fe</field>
             <field name="dni">32290203</field>
+            <field name="telefono">3416113531</field>
+            <field name="email">imartino@mroots.com.ar</field>
             <field name="fecha_nacimiento">1986-11-04</field>
           </record>
         <!-- Propietarios. -->
           <record id="1" model="realty.propietario">
             <field name="contacto">1</field>
             <field name="propiedad">1</field>
+          </record>
+          <record id="1" model="realty.propietario">
+            <field name="contacto">2</field>
+            <field name="propiedad">2</field>
           </record>
         <!-- Contratos. -->
           <record id="1" model="realty.contrato">
@@ -246,6 +261,9 @@
             <field name="alquiler">1</field>
             <field name="fecha">2021-10-05</field>
             <field name="valor">20000</field>
+            <field name="descuento">0</field>
+            <field name="intereses">0</field>
+            <field name="extras">0</field>
           </record>
     </data>
 </odoo>

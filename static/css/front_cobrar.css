@@ -96,7 +96,8 @@ input {
     border-radius: 3px;
     border: 1px solid #dcdcdc;
 }
-
+.checkbox {
+    margin-top: 10px;}
 .ccicon {
     height: 38px;
     position: absolute;

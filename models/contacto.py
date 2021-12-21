@@ -11,5 +11,12 @@ class Contacto(models.Model):
     nombre = fields.Char()
     direccion = fields.Text()
     dni = fields.Char()
+    email = fields.Char()
+    telefono = fields.Char()
     fecha_nacimiento = fields.Date()
-    nombre_inmobiliaria = fields.Char(related='inmobiliaria.nombre', string='Inmobiliaria', )
+
+    def name_get(self):
+        result = []
+        for record in self:
+            result.append((record.id, record.nombre))
+        return result

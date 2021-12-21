@@ -27,7 +27,7 @@
       <field name="model">realty.suscripcion</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nombre_inmobiliaria"/>
+          <field name="inmobiliaria"/>
           <field name="codigo_plan"/>
           <field name="create_date"/>
           <field name="fecha_ultimo_cobro"/>
@@ -54,7 +54,7 @@
       <field name="model">realty.propiedad</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nombre_inmobiliaria"/>
+          <field name="inmobiliaria"/>
           <field name="nombre"/>
           <field name="direccion"/>
           <field name="create_date"/>
@@ -67,7 +67,7 @@
       <field name="model">realty.contrato</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="direccion_propiedad"/>
+          <field name="propiedad"/>
           <field name="fecha_inicio"/>
           <field name="fecha_fin"/>
           <field name="valor_inicial"/>
@@ -85,6 +85,7 @@
           <field name="fecha"/>
           <field name="fecha_vencimiento"/>
           <field name="valor"/>
+          <field name="total_pagado"/>
           <field name="estado"/>
           <button name="cobrarClickEvent" string="Cobrar" type="object" attrs="{'invisible': [('estado', '=', 'Pagado')]}" />
         </tree>

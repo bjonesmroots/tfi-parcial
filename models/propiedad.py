@@ -9,6 +9,12 @@ class Propiedad(models.Model):
 
     inmobiliaria = fields.Many2one('realty.inmobiliaria', 'Inmobiliaria')
     nombre = fields.Char()
-    nombre_inmobiliaria = fields.Char(related='inmobiliaria.nombre', string='Inmobiliaria', )
     direccion = fields.Text()
     propietarios = fields.One2many('realty.propietario', 'propiedad', string='Propietarios', )
+    contratos = fields.One2many('realty.contrato', 'propiedad', string='Contratos', )
+
+    def name_get(self):
+        result = []
+        for record in self:
+            result.append((record.id, record.direccion))
+        return result
